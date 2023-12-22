@@ -1,0 +1,27 @@
+Petits rappels :
+
+La fonction onCreate() est le point d'entrée de  l'application/tutp et elle appelle
+d'autres fonctions pour créer l'interface utilisateur.
+
+Dans les programmes Kotlin, la fonction main() est le point précis où démarre
+le compilateur Kotlin dans votre code.
+
+Dans les applications Android, c'est la fonction onCreate() qui remplit ce rôle.
+
+La fonction setContent() à l'intérieur de la fonction onCreate() permet de
+définir votre mise en page au moyen de fonctions modulables.
+
+Toutes les fonctions annotées avec @Composable peuvent être appelées à partir de la
+fonction setContent() ou d'autres fonctions modulables.
+L'annotation indique au compilateur Kotlin que cette fonction est utilisée
+par Jetpack Compose pour générer l'interface utilisateur.
+
+@Composable: fonction modulable qui reçoit des entrées et génère ce qui s'affiche à l'écran
+    @Composable
+    fun Greeting(name: String) {
+       Text(text = "Hello $name!")
+    }
+* La première lettre d'un nom de fonction @Composable est mise en majuscule -> @Composable
+* L'annotation @Composable est ajoutée avant la fonction. -> Greeting(name: String)
+* Les fonctions @Composable ne peuvent rien renvoyer.
+
