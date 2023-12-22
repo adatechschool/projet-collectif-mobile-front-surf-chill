@@ -1,3 +1,0 @@
-com.example.surfchill.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme
