@@ -1,6 +1,7 @@
 package com.example.surfchill
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,10 +14,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.surfchill.ui.theme.SurfChillTheme
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -34,7 +42,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     HomeScreen() //(stringResource(R.string.app_name),
-
+                    ButtonGo(onClick = { Toast.makeText(this@MainActivity, "Click", Toast.LENGTH_SHORT).show()}
+                    )
                 }
             }
         }
@@ -71,15 +80,49 @@ fun TitleApp(message: String, modifier: Modifier = Modifier) {
                 .padding(bottom = 16.dp)
         )}
 
-//@Composable
-//fun ButtonGo(){
-        //Button(
-            //onClick = { /* Handle button click */ },
-            //modifier = Modifier
-                //.fillMaxWidth()
-                //.height(50.dp)
-        //)
-//}
+@Composable
+fun ButtonGo(onClick: () -> Unit, modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Let's go !",
+                fontSize = 16.sp
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Icon(
+                painter = painterResource(id = R.drawable.bouton),
+                contentDescription = null
+            )
+        }
+        Button(
+            onClick = onClick,
+            modifier = modifier
+                .fillMaxWidth()
+                .height(56.dp)
+        ) {
+
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun GreetingPreview() {
+    SurfChillTheme {
+        HomeScreen()
+        TitleApp(stringResource(id = R.string.app_name))
+        ButtonGo(onClick = { Toast.makeText("Click", Toast.LENGTH_SHORT).show()}
+        )
+    }
+}
+
 
 //@Composable
 //fun GreetingText(message: String, modifier: Modifier = Modifier) {
@@ -96,13 +139,3 @@ fun TitleApp(message: String, modifier: Modifier = Modifier) {
         //)
     //}
 //}
-
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun GreetingPreview() {
-    SurfChillTheme {
-        HomeScreen()
-        TitleApp(stringResource(id = R.string.app_name))
-    }
-}
