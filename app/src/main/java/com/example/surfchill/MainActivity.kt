@@ -1,6 +1,8 @@
 package com.example.surfchill
 
+import android.content.DialogInterface.OnClickListener
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,7 +25,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.TextButton
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
@@ -41,11 +45,21 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HomeScreen() //(stringResource(R.string.app_name),
-                    ButtonGo(onClick = { Toast.makeText(this@MainActivity, "Click", Toast.LENGTH_SHORT).show()}
-                    )
+                    HomeScreen()
+                    TitleApp(stringResource(id = R.string.app_name))
                 }
             }
+            /* Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+                    .padding(20.dp)) {
+                Button(onClick = {
+                    Toast.makeText(applicationContext, "You clicked the Button.", Toast.LENGTH_LONG).show()
+                }) {
+                    Text("Submit Request")
+                } */
         }
     }
 }
@@ -81,36 +95,28 @@ fun TitleApp(message: String, modifier: Modifier = Modifier) {
         )}
 
 @Composable
-fun ButtonGo(onClick: () -> Unit, modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = "Let's go !",
-                fontSize = 16.sp
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Icon(
-                painter = painterResource(id = R.drawable.bouton),
-                contentDescription = null
-            )
-        }
-        Button(
-            onClick = onClick,
-            modifier = modifier
-                .fillMaxWidth()
-                .height(56.dp)
-        ) {
+fun NavigateButton(onClick: () -> Unit, modifier: Modifier) {
+    TextButton(onClick = {
 
-        }
+    }) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .padding(20.dp)) {
+            Text("Let's go !")
+            Image(
+                painter = painterResource(id= R.drawable.bouton),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(),
+                contentScale = ContentScale.Crop,
+                alpha = 0.9F
+        )
     }
-}
+}}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -118,24 +124,6 @@ fun GreetingPreview() {
     SurfChillTheme {
         HomeScreen()
         TitleApp(stringResource(id = R.string.app_name))
-        ButtonGo(onClick = { Toast.makeText("Click", Toast.LENGTH_SHORT).show()}
-        )
+        NavigateButton(onClick = { /*TODO*/ }, modifier = Modifier)
     }
 }
-
-
-//@Composable
-//fun GreetingText(message: String, modifier: Modifier = Modifier) {
-    //Column(
-        //verticalArrangement = Arrangement.Center,
-        //modifier = modifier.padding(8.dp)
-    //) {
-        //Text(
-            //text = message,
-            //fontSize = 40.sp,
-            //lineHeight = 66.sp,
-            //textAlign = TextAlign.Center,
-            //modifier = Modifier
-        //)
-    //}
-//}
