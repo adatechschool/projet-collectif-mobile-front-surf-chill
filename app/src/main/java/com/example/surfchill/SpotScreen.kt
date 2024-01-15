@@ -57,8 +57,8 @@ fun SpotScreen(message: String, modifier: Modifier = Modifier) {
         Text(
             text = "L’Australie est définitivement l’un des pays avec les meilleurs spots de surf au monde. Parmi eux vous trouverez le très connu Bells Beach considéré comme un spot historique et spirituel australien. En effet, ce n’est qu’autre la célèbre vague que rêve de surfer Bodhi dans Point Break. Chaque année vous pourrez également y retrouver le célèbre Rip Curl Pro Surf & Music Festival.\n" +
                     "Sur cette plage, à 100 km au Sud-Ouest de Melbourne dans l’Etat de Victoria vous pourrez profiter d’un magnifique Swell, observer les plus grands surfeurs du monde ou encore faire la fête dans une ambiance détente qui ne peut que vous plaire.",
-            fontSize = 25.sp,
-            lineHeight = 30.sp,
+            fontSize = 20.sp,
+            lineHeight = 25.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxWidth()
@@ -66,7 +66,7 @@ fun SpotScreen(message: String, modifier: Modifier = Modifier) {
         )
         Text(
             text = " Bells Beach ",
-            fontSize = 40.sp,
+            fontSize = 30.sp,
             textAlign = TextAlign.Start,
             modifier = Modifier
                 .fillMaxWidth()
@@ -74,9 +74,6 @@ fun SpotScreen(message: String, modifier: Modifier = Modifier) {
         )
     }
 }
-
-
-
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

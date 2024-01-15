@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeScreen">
+
+    <!-- ... autres destinations ... -->
+
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.example.surfchill.HomeScreen"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeScreen_to_spotScreen"
+            app:destination="@id/spotScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/spotScreen"
+        android:name="com.example.surfchill.SpotScreen"
+        android:label="SpotScreen"
+        tools:layout="@layout/fragment_spotscreen" />
+
+</navigation>
+
