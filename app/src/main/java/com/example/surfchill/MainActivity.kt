@@ -16,24 +16,35 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.surfchill.ui.theme.SurfChillTheme
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowColumn
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.TextButton
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,17 +60,6 @@ class MainActivity : ComponentActivity() {
                     TitleApp(stringResource(id = R.string.app_name))
                 }
             }
-            /* Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-                    .padding(20.dp)) {
-                Button(onClick = {
-                    Toast.makeText(applicationContext, "You clicked the Button.", Toast.LENGTH_LONG).show()
-                }) {
-                    Text("Submit Request")
-                } */
         }
     }
 }
@@ -94,36 +94,53 @@ fun TitleApp(message: String, modifier: Modifier = Modifier) {
                 .padding(bottom = 16.dp)
         )}
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun NavigateButton(onClick: () -> Unit, modifier: Modifier) {
-    TextButton(onClick = {
-
-    }) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
+    val context = LocalContext.current
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .padding(20.dp)) {
-            Text("Let's go !")
+                .clickable(onClick = {
+                    Toast.makeText(context, "You clicked me!", Toast.LENGTH_SHORT).show()
+                })
+        ) {
             Image(
-                painter = painterResource(id= R.drawable.bouton),
-                contentDescription = null,
+                painter = painterResource(id = R.drawable.bouton),
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight(),
-                contentScale = ContentScale.Crop,
-                alpha = 0.9F
-        )
+                    .align(Alignment.Center)
+                    .zIndex(1F)
+                    .rotate(90F),
+                contentDescription = null,
+                contentScale = ContentScale.FillWidth,
+                alpha = 0.9F,
+            )
+            Text(
+                text = "Let's go !",
+                color = Color.Black,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .zIndex(2F)
+            )
+
+        }
     }
-}}
+}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
+    val context = LocalContext.current
     SurfChillTheme {
         HomeScreen()
         TitleApp(stringResource(id = R.string.app_name))
-        NavigateButton(onClick = { /*TODO*/ }, modifier = Modifier)
+        NavigateButton(onClick = {
+            Toast.makeText(context, "You clicked me!", Toast.LENGTH_SHORT).show()
+        }, modifier = Modifier)
     }
 }
