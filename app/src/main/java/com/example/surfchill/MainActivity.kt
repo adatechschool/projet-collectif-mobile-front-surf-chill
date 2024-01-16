@@ -85,13 +85,14 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 fun TitleApp(message: String, modifier: Modifier = Modifier) {
         Text(
             text = "Surf and Chill",
-            fontSize = 40.sp,
+            color = Color.Blue,
+            fontSize = 50.sp,
             lineHeight = 66.sp,
             textAlign = TextAlign.Center,
 
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 16.dp)
+                .padding(top = 30.dp,bottom = 16.dp)
         )}
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -122,6 +123,7 @@ fun NavigateButton(onClick: () -> Unit, modifier: Modifier) {
             )
             Text(
                 text = "Let's go !",
+                fontSize = 25.sp,
                 color = Color.Black,
                 modifier = Modifier
                     .align(Alignment.Center)
