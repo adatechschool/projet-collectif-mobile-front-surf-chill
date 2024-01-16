@@ -19,6 +19,7 @@ import androidx.compose.runtime.movableContentOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,7 +51,7 @@ fun SpotScreen(message: String, modifier: Modifier = Modifier) {
     ){
         Text(
             text = "Bells Beach",
-            color = Color.Blue,
+            color = colorResource(id = R.color.blue),
             fontSize = 40.sp,
             lineHeight = 25.sp,
             textAlign = TextAlign.Center,
@@ -75,14 +76,14 @@ fun SpotScreen(message: String, modifier: Modifier = Modifier) {
             textAlign = TextAlign.Left,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 20.dp)
+                .padding(bottom = 16.dp)
         )
         Image(
             painter = painterResource(id = R.drawable.lieu),
             contentDescription = "goutte bleue symbolisant un lieu sur une carte",
             modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp)
+                .height(55.dp)
 
         )
     }

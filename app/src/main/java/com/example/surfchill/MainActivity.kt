@@ -40,6 +40,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -85,8 +86,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 fun TitleApp(message: String, modifier: Modifier = Modifier) {
         Text(
             text = "Surf and Chill",
-            color = Color.Blue,
-            fontSize = 50.sp,
+            color = colorResource(id = R.color.blue),
+            fontSize = 60.sp,
             lineHeight = 66.sp,
             textAlign = TextAlign.Center,
 
@@ -122,8 +123,8 @@ fun NavigateButton(onClick: () -> Unit, modifier: Modifier) {
                 alpha = 0.9F,
             )
             Text(
-                text = "Let's go !",
-                fontSize = 25.sp,
+                text = "Let's Go !",
+                fontSize = 30.sp,
                 color = Color.Black,
                 modifier = Modifier
                     .align(Alignment.Center)
